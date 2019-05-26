@@ -10,6 +10,7 @@ namespace Text
     {
         static void Main(string[] args)
         {
+            
         }
     }
 }
