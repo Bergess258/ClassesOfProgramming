@@ -17,8 +17,12 @@ namespace SuhovLab1
 
             StreamReader Reader = new StreamReader("input.txt");
             string varReg = @"(int||sbyte||short||long||byte||ushort||uint||ulong||char||float||double||decimal||bool||object||string)";
-            Regex vars = new Regex(@"^"+varReg+@"(\[\]||\[\,\])(\s)\D\w*(\;)");
+            string vars = @"^"+varReg+@"(\[\]||\[\,\])(\s)(\D\w*)(\;)";
+            string clas = @"^class\s(\D+(\d*\D*)*);";
+            string cons = @"^const\s" + varReg+ @"(\s)(\D\w*)(\;||\s=\s(\d+||\d+.\d+));";
+
             Regex type = new Regex(varReg);
+            List<IDent> list= new List<IDent>();
             //Напиши regex сам для классов и присваивания переменных
             //Для методов написал сам,чтобы не мучался)
             Regex method = new Regex(@"(int||sbyte||short||long||byte||ushort||uint||ulong||char||float||double||decimal||bool||object||string||void)\s\D\w*\(((\s*((ref||out)\s)*"+varReg+ @"\s\D\w*\,)*(\s((ref||out)\s)*" + varReg + @"\s\D\w*))?\)\;");
@@ -28,15 +32,29 @@ namespace SuhovLab1
             while (true)
             {
                 //считывание с файла и если дошел до конца использую catch. Оно сработает, т.к. файл закончится и у потока не будет прав читать данные не из файла
-                string line = line = Reader.ReadLine();
-                string[] masLine;
-                try
-                {
-                    masLine = line.Split(' ');
-                }
-                catch
-                {
+                string line = Reader.ReadLine();
+                if (line == null)
                     break;
+                Match match = Regex.Match(line, vars);
+                if (match.Success )
+                {
+                    list.Add(new Var(match.Groups[4].Value, match.Groups[1].Value));
+                }
+                else
+                {
+                    match = Regex.Match(line, clas);
+                    if (match.Success)
+                    {
+                        list.Add(new Class(match.Groups[1].Value));
+                    }
+                    else
+                    {
+                        match = Regex.Match(line, cons);
+                        if (match.Success)
+                        {
+                            list.Add(new Const(match.Groups[3].Value, match.Groups[1].Value, match.Groups[5].Value));
+                        }
+                    }
                 }
                 //Дальше уже сам)
                 //Много if-ов и немного запары с методами)
