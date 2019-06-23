@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+@using (Html.BeginForm("About", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <h2>@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+    <p>Use this area to provide additional information.</p>
+<textarea name="s"></textarea>
+    <input type="submit" value="Выполнить" />
+}
