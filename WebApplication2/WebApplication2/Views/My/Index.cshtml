@@ -1,27 +1,35 @@
 ﻿@model WebApplication2.Models.forMatrix
 
 @{
+    /**/
+
     ViewBag.Title = "Умнодение матрицы";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@using (Html.BeginForm("Index", "My", new {}, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Index", "My", new { }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-<div style="margin-top:50px;">
-    <textarea name="rows"></textarea>
-    <textarea name="col"></textarea>
-    <button type="submit">Вывести</button>
-    <br>
-    @if (Model.mas!=null)
-    {
-        for(int i = 0; i < Model.rows; i++)
+
+    <div style="margin-top:50px;">
+
+        <textarea name="rows"></textarea>
+        <textarea name="col"></textarea>
+        <button type="submit">Вывести</button>
+        <br>
+        @if (Model.mas != null)
         {
-            for (int j = 0; j < Model.col; j++)
+            int[][] mas = new int[0][];
+            for (int i = 0; i < Model.rows; i++)
             {
-                @Html.TextBoxFor(m=>m.mas[i][j]);
+                for (int j = 0; j < Model.col; j++)
+                {
+                    @Html.TextBoxFor(m => m.mas[i][j]);
+                }
+                <br>
             }
-            <br>
         }
-    }
-</div>
+
+    </div>
 }
+
+
 
