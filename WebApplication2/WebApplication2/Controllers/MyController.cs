@@ -27,5 +27,25 @@ namespace WebApplication2.Controllers
             formatrix.col = col;
             return View(formatrix);
         }
+        [HttpPost]
+        public ActionResult MasMultiply(forMatrix formatrix)
+        {
+            int row = formatrix.mas.Length;
+            
+            if (row != 0)
+            {
+                int col = formatrix.mas[0].Length;
+
+                for (int i = 0; i < col; i++)
+                {
+                    for (int j = 0; j < row; j++)
+                    {
+                        formatrix.mas[i][j] = formatrix.mas[i][j] ^ 2;
+                    }
+                }
+            }
+            return View(formatrix);
+
+        }
     }
 }
