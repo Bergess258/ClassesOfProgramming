@@ -16,29 +16,15 @@ namespace WebApplication2.Controllers
             return View(formatrix);
         }
         [HttpPost] //вызывается после нажатия на кнопку
-        public ActionResult Index(forMatrix formatrix,bool ok=false)
+        public ActionResult Index(forMatrix formatrix, int rows, int col)
         {
-            if (!ok)
+            formatrix.mas = new int[rows][];
+            for (int i = 0; i < rows; i++)
             {
-                formatrix.mas = new int[formatrix.rows][];
-                for (int i = 0; i < formatrix.rows; i++)
-                {
-                    formatrix.mas[i] = new int[formatrix.col];
-                }
-                formatrix.rows = formatrix.rows;
-                formatrix.col = formatrix.col;
+                formatrix.mas[i] = new int[col];
             }
-            else
-            {
-                ModelState.Clear();
-                for (int i = 0; i < formatrix.rows; i++)
-                {
-                    for (int j = 0; j < formatrix.col; j++)
-                    {
-                        formatrix.mas[i][j] *= formatrix.mas[i][j];
-                    }
-                }
-            }
+            formatrix.rows = rows;
+            formatrix.col = col;
             return View(formatrix);
         }
     }
