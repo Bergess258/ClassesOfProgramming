@@ -244,7 +244,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\My\Index.cshtml" />
-    <Content Include="Views\My\Mult.cshtml" />
+    <Content Include="Views\My\MasMultiply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

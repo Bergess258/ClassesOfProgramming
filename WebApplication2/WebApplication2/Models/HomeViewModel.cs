@@ -11,10 +11,4 @@ namespace WebApplication2.Models
         public int rows { get; set; }
         public int col { get; set; }
     }
-    public class Mult
-    {
-        public int[][] mas { get; set; }
-        public int rows { get; set; }
-        public int col { get; set; }
-    }
 }

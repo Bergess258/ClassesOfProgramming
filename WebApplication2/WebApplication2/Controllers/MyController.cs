@@ -27,42 +27,22 @@ namespace WebApplication2.Controllers
             formatrix.col = col;
             return View(formatrix);
         }
-        public ActionResult MasMultiply()
-        {
-            forMatrix formatrix = new forMatrix();
-            return View(formatrix);
-        }
-        [HttpPost] //вызывается после нажатия на кнопку
-        public ActionResult Index2(Mult mult, int rows, int col)
-        {
-            mult.mas = new int[rows][];
-            for (int i = 0; i < rows; i++)
-            {
-                mult.mas[i] = new int[col];
-            }
-            mult.rows = rows;
-            mult.col = col;
-            return View(mult);
-        }
         [HttpPost]
-        public ActionResult MasMultiply(forMatrix formatrix, int rows, int col)
+        public ActionResult MasMultiply(forMatrix formatrix)
         {
-            if (formatrix.rows != 0 && formatrix.col != 0)
+            int row = formatrix.mas.Length;
+            
+            if (row != 0)
             {
-                for (int i = 0; i < formatrix.col; i++)
+                int col = formatrix.mas[0].Length;
+
+                for (int i = 0; i < col; i++)
                 {
-                    for (int j = 0; j < formatrix.rows; j++)
+                    for (int j = 0; j < row; j++)
                     {
                         formatrix.mas[i][j] = formatrix.mas[i][j] ^ 2;
                     }
                 }
-                for (int i = 0; i < rows; i++)
-                {
-                    formatrix.mas[i] = new int[col];
-                }
-                formatrix.rows = rows;
-                formatrix.col = col;
-
             }
             return View(formatrix);
 

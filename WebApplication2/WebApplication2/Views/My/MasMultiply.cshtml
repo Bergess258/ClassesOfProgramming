@@ -1,0 +1,28 @@
+﻿@model WebApplication2.Models.forMatrix
+@{
+    ViewBag.Title = "MasMultiply";
+}
+
+<h2>MasMultiply</h2>
+@using (Html.BeginForm("MasMultiply", "My", new { }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+<div>
+    <button type="submit">Возвести в квадрат</button>
+    <br>
+    @if (Model.mas != null)
+    {
+        
+        int row = Model.mas.Length;
+        int col = Model.mas[0].Length;
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < col; j++)
+            {
+                @Html.TextBoxFor(m => m.mas[i][j]);
+            }
+            <br>
+        }
+    }
+</div>
+}
+

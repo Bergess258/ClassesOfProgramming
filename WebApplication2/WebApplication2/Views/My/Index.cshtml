@@ -8,9 +8,7 @@
 }
 @using (Html.BeginForm("Index", "My", new { }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-
     <div style="margin-top:50px;">
-
         <textarea name="rows"></textarea>
         <textarea name="col"></textarea>
         <button type="submit">Вывести</button>
@@ -27,7 +25,25 @@
                 <br>
             }
         }
+    </div>
+}
 
+@using (Html.BeginForm("MasMultiply", "My", new { }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div>
+        <button type="submit">Возвести в квадрат</button>
+        <br>
+        @if (Model.mas != null)
+        {
+            for (int i = 0; i < Model.rows; i++)
+            {
+                for (int j = 0; j < Model.col; j++)
+                {
+                    @Html.TextBoxFor(m => m.mas[i][j]);
+                }
+                <br>
+            }
+        }
     </div>
 }
 
