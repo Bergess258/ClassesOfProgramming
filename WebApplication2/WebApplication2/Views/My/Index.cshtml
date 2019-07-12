@@ -7,20 +7,21 @@
 @using (Html.BeginForm("Index", "My", new {}, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
 <div style="margin-top:50px;">
-    <textarea name="rows"></textarea>
-    <textarea name="col"></textarea>
+    @Html.TextBoxFor(m => m.rows)
+    @Html.TextBoxFor(m => m.col)
     <button type="submit">Вывести</button>
     <br>
-    @if (Model.mas!=null)
+    @if (Model.mas != null)
     {
-        for(int i = 0; i < Model.rows; i++)
+        for (int i = 0; i < Model.rows; i++)
         {
             for (int j = 0; j < Model.col; j++)
             {
-                @Html.TextBoxFor(m=>m.mas[i][j]);
+                @Html.TextBoxFor(m => m.mas[i][j]);
             }
             <br>
         }
+        <button type="submit" name="ok" value="true">Умножить</button>
     }
 </div>
 }
