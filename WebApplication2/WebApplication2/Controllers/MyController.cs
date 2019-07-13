@@ -40,10 +40,11 @@ namespace WebApplication2.Controllers
                 {
                     for (int j = 0; j < row; j++)
                     {
-                        formatrix.mas[i][j] = formatrix.mas[i][j] ^ 2;
+                        formatrix.mas[i][j] *= formatrix.mas[i][j];
                     }
                 }
             }
+            ModelState.Clear();
             return View(formatrix);
 
         }
