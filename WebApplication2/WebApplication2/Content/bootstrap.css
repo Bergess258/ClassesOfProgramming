@@ -4177,6 +4177,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar-header {
     float: left;
+    padding:50px;
   }
 }
 .navbar-collapse {
@@ -4954,6 +4955,10 @@ a.badge:focus {
 }
 .nav-pills > li > a > .badge {
   margin-left: 3px;
+}
+/*INTRO*/
+.top1{
+    background-image: url(../jpg/ap-ui.jpg)
 }
 .jumbotron {
   padding-top: 30px;
@@ -6754,4 +6759,5 @@ button.close {
     display: none !important;
   }
 }
+
 /*# sourceMappingURL=bootstrap.css.map */
