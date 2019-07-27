@@ -19,8 +19,10 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -49,6 +51,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -181,9 +185,42 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Case.cs">
+      <DependentUpon>ВИ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NameW.cs">
+      <DependentUpon>ВИ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\possSkinsInCase.cs">
+      <DependentUpon>ВИ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SkinN.cs">
+      <DependentUpon>ВИ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Type.cs">
+      <DependentUpon>ВИ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Weapon.cs">
+      <DependentUpon>ВИ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ВИ.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ВИ.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ВИ.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ВИ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ВИ.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ВИ.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -192,13 +229,32 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\512fx384f.png" />
+    <Content Include="Content\img\csgo-case-png-2.png.fe662af650c33392712b926d8c96dcda.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="jpg\1520886847_CSGO-Logo.png" />
+    <Content Include="Models\ВИ.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ВИ.edmx</DependentUpon>
+      <LastGenOutput>ВИ.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ВИ.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ВИ.edmx</DependentUpon>
+      <LastGenOutput>ВИ.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\ВИ.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ВИ.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ВИ.edmx.diagram">
+      <DependentUpon>ВИ.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -262,6 +318,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

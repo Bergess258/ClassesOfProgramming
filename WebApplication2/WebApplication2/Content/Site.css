@@ -25,3 +25,28 @@ textarea {
 .icon-bar{
     float:left !important;
 }
+.case {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100px;
+    display:none;
+    margin-left:-45px;
+}
+.DropHistory_item{
+    position:relative;
+    border:3px solid #ff0000;
+}
+.DropHistory_item:hover> .case{
+    display:block;
+}
+.DropHistory{
+    width:100%;
+    height:100px;
+    display:flex;
+    background-color:gray;
+    padding:5px 0 5px 5px;
+}
+.weapon {
+    height: 100px;
+}

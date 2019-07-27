@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Case">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <EntityType Name="NameW">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="possSkinsInCase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Caseid" Type="int" />
+          <Property Name="Weaponid" Type="int" />
+        </EntityType>
+        <EntityType Name="SkinN">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Weapon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" />
+          <Property Name="SkinNameId" Type="int" />
+          <Property Name="Image" Type="image" />
+          <Property Name="WeaponNId" Type="int" />
+        </EntityType>
+        <Association Name="FK__possSkins__Casei__282DF8C2">
+          <End Role="Case" Type="Self.Case" Multiplicity="0..1" />
+          <End Role="possSkinsInCase" Type="Self.possSkinsInCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="possSkinsInCase">
+              <PropertyRef Name="Caseid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__possSkins__Weapo__29221CFB">
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="0..1" />
+          <End Role="possSkinsInCase" Type="Self.possSkinsInCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Weapon">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="possSkinsInCase">
+              <PropertyRef Name="Weaponid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Weapon__SkinName__503BEA1C">
+          <End Role="SkinN" Type="Self.SkinN" Multiplicity="0..1" />
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkinN">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Weapon">
+              <PropertyRef Name="SkinNameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Weapon__TypeId__14270015">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Weapon">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Weapon__WeaponNI__4F47C5E3">
+          <End Role="NameW" Type="Self.NameW" Multiplicity="0..1" />
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NameW">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Weapon">
+              <PropertyRef Name="WeaponNId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NameW" EntityType="Self.NameW" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="possSkinsInCase" EntityType="Self.possSkinsInCase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SkinN" EntityType="Self.SkinN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Weapon" EntityType="Self.Weapon" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__possSkins__Casei__282DF8C2" Association="Self.FK__possSkins__Casei__282DF8C2">
+            <End Role="Case" EntitySet="Case" />
+            <End Role="possSkinsInCase" EntitySet="possSkinsInCase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__possSkins__Weapo__29221CFB" Association="Self.FK__possSkins__Weapo__29221CFB">
+            <End Role="Weapon" EntitySet="Weapon" />
+            <End Role="possSkinsInCase" EntitySet="possSkinsInCase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Weapon__SkinName__503BEA1C" Association="Self.FK__Weapon__SkinName__503BEA1C">
+            <End Role="SkinN" EntitySet="SkinN" />
+            <End Role="Weapon" EntitySet="Weapon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Weapon__TypeId__14270015" Association="Self.FK__Weapon__TypeId__14270015">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Weapon" EntitySet="Weapon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Weapon__WeaponNI__4F47C5E3" Association="Self.FK__Weapon__WeaponNI__4F47C5E3">
+            <End Role="NameW" EntitySet="NameW" />
+            <End Role="Weapon" EntitySet="Weapon" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Case">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="possSkinsInCase" Relationship="Self.FK__possSkins__Casei__282DF8C2" FromRole="Case" ToRole="possSkinsInCase" />
+        </EntityType>
+        <EntityType Name="NameW">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Weapon" Relationship="Self.FK__Weapon__WeaponNI__4F47C5E3" FromRole="NameW" ToRole="Weapon" />
+        </EntityType>
+        <EntityType Name="possSkinsInCase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Caseid" Type="Int32" />
+          <Property Name="Weaponid" Type="Int32" />
+          <NavigationProperty Name="Case" Relationship="Self.FK__possSkins__Casei__282DF8C2" FromRole="possSkinsInCase" ToRole="Case" />
+          <NavigationProperty Name="Weapon" Relationship="Self.FK__possSkins__Weapo__29221CFB" FromRole="possSkinsInCase" ToRole="Weapon" />
+        </EntityType>
+        <EntityType Name="SkinN">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Weapon" Relationship="Self.FK__Weapon__SkinName__503BEA1C" FromRole="SkinN" ToRole="Weapon" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Weapon" Relationship="Self.FK__Weapon__TypeId__14270015" FromRole="Type" ToRole="Weapon" />
+        </EntityType>
+        <EntityType Name="Weapon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="SkinNameId" Type="Int32" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="WeaponNId" Type="Int32" />
+          <NavigationProperty Name="NameW" Relationship="Self.FK__Weapon__WeaponNI__4F47C5E3" FromRole="Weapon" ToRole="NameW" />
+          <NavigationProperty Name="possSkinsInCase" Relationship="Self.FK__possSkins__Weapo__29221CFB" FromRole="Weapon" ToRole="possSkinsInCase" />
+          <NavigationProperty Name="SkinN" Relationship="Self.FK__Weapon__SkinName__503BEA1C" FromRole="Weapon" ToRole="SkinN" />
+          <NavigationProperty Name="Type" Relationship="Self.FK__Weapon__TypeId__14270015" FromRole="Weapon" ToRole="Type" />
+        </EntityType>
+        <Association Name="FK__possSkins__Casei__282DF8C2">
+          <End Role="Case" Type="Self.Case" Multiplicity="0..1" />
+          <End Role="possSkinsInCase" Type="Self.possSkinsInCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="possSkinsInCase">
+              <PropertyRef Name="Caseid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Weapon__WeaponNI__4F47C5E3">
+          <End Role="NameW" Type="Self.NameW" Multiplicity="0..1" />
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NameW">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Weapon">
+              <PropertyRef Name="WeaponNId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__possSkins__Weapo__29221CFB">
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="0..1" />
+          <End Role="possSkinsInCase" Type="Self.possSkinsInCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Weapon">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="possSkinsInCase">
+              <PropertyRef Name="Weaponid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Weapon__SkinName__503BEA1C">
+          <End Role="SkinN" Type="Self.SkinN" Multiplicity="0..1" />
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkinN">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Weapon">
+              <PropertyRef Name="SkinNameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Weapon__TypeId__14270015">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Weapon">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Base" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Case" EntityType="Self.Case" />
+          <EntitySet Name="NameW" EntityType="Self.NameW" />
+          <EntitySet Name="possSkinsInCase" EntityType="Self.possSkinsInCase" />
+          <EntitySet Name="SkinN" EntityType="Self.SkinN" />
+          <EntitySet Name="Type" EntityType="Self.Type" />
+          <EntitySet Name="Weapon" EntityType="Self.Weapon" />
+          <AssociationSet Name="FK__possSkins__Casei__282DF8C2" Association="Self.FK__possSkins__Casei__282DF8C2">
+            <End Role="Case" EntitySet="Case" />
+            <End Role="possSkinsInCase" EntitySet="possSkinsInCase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Weapon__WeaponNI__4F47C5E3" Association="Self.FK__Weapon__WeaponNI__4F47C5E3">
+            <End Role="NameW" EntitySet="NameW" />
+            <End Role="Weapon" EntitySet="Weapon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__possSkins__Weapo__29221CFB" Association="Self.FK__possSkins__Weapo__29221CFB">
+            <End Role="Weapon" EntitySet="Weapon" />
+            <End Role="possSkinsInCase" EntitySet="possSkinsInCase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Weapon__SkinName__503BEA1C" Association="Self.FK__Weapon__SkinName__503BEA1C">
+            <End Role="SkinN" EntitySet="SkinN" />
+            <End Role="Weapon" EntitySet="Weapon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Weapon__TypeId__14270015" Association="Self.FK__Weapon__TypeId__14270015">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Weapon" EntitySet="Weapon" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Base">
+          <EntitySetMapping Name="Case">
+            <EntityTypeMapping TypeName="Model.Case">
+              <MappingFragment StoreEntitySet="Case">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NameW">
+            <EntityTypeMapping TypeName="Model.NameW">
+              <MappingFragment StoreEntitySet="NameW">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="possSkinsInCase">
+            <EntityTypeMapping TypeName="Model.possSkinsInCase">
+              <MappingFragment StoreEntitySet="possSkinsInCase">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Caseid" ColumnName="Caseid" />
+                <ScalarProperty Name="Weaponid" ColumnName="Weaponid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SkinN">
+            <EntityTypeMapping TypeName="Model.SkinN">
+              <MappingFragment StoreEntitySet="SkinN">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type">
+            <EntityTypeMapping TypeName="Model.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Weapon">
+            <EntityTypeMapping TypeName="Model.Weapon">
+              <MappingFragment StoreEntitySet="Weapon">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="SkinNameId" ColumnName="SkinNameId" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="WeaponNId" ColumnName="WeaponNId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
