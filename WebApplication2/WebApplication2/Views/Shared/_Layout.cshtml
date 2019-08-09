@@ -13,22 +13,25 @@
     <div class="navbar navbar-inverse navbar-fixed-top" >
         <div class="container">
             <div class="navbar-collapse collapse">
-                <span class="icon-bar"><img src="~/jpg/1520886847_CSGO-Logo.png" /></span>
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Главная", "Index", "Home")</li>
-                    <li>@Html.ActionLink("F.A.Q.", "About", "Home")</li>
-                    <li>@Html.ActionLink("Отзывы", "Contact", "Home")</li>
-                </ul>
+                @*<span class="icon-bar"><img src="~/jpg/1520886847_CSGO-Logo.png" /></span>*@
+                    <a href="~/Home/Index">
+                        <img class="icon-bar" src="~/jpg/1520886847_CSGO-Logo.png" width="50" height="50" /> 
+                    </a>
+                @*<ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+            <li>@Html.ActionLink("F.A.Q.", "About", "Home")</li>
+            <li>@Html.ActionLink("Отзывы", "Contact", "Home")</li>
+        </ul>*@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div style="margin-top:50px">
         @RenderBody()
-        <hr />
+        @*<hr />
         <footer>
             <p>&copy; @DateTime.Now.Year – Рулетка CS:GO</p>
-        </footer>
+        </footer>*@
     </div>
 
     @Scripts.Render("~/bundles/jquery")

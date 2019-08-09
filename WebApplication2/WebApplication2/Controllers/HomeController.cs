@@ -12,7 +12,7 @@ namespace WebApplication2.Controllers
         Base context = new Base();
         public ActionResult Index()
         {
-            context.Case.Co
+            
             return View();
         }
 

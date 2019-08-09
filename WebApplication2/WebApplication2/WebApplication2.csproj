@@ -19,10 +19,8 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -230,7 +228,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\512fx384f.png" />
+    <Content Include="Content\img\57d3d0a9273fd157136714c9.png" />
+    <Content Include="Content\img\5ad038f54b434162bd5e7e3c.png" />
     <Content Include="Content\img\csgo-case-png-2.png.fe662af650c33392712b926d8c96dcda.png" />
+    <Content Include="Content\img\faq-png-icon-1.png" />
+    <Content Include="Content\img\play.png" />
+    <Content Include="Content\img\profile_png_1114172.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

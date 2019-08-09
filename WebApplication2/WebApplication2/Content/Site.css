@@ -1,52 +1,132 @@
 ﻿body {
-    padding:0;
+    margin:0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #60606e;
+}
+*,
+*:before,
+*:after{
+    box-sizing: border-box;
+}
+h1, h2,h3,h4,h5,h6{
     margin:0;
 }
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-
+/*Container*/
+.container{
+    width:100%;
+    max-width:1140px;
+    margin:0 auto;
 }
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+/*Intro*/
+.intro {
+    width: 100%;
+    height: 850px;
+    background-color:#0e0e2b;
+    background-position:center;
 }
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+/*Header*/
+.header{
+    padding-top:30px;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
 }
-
-.icon-bar{
-    float:left !important;
+/*header_inner*/
+.header_inner{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
 }
-.case {
+/*Navigation*/
+.nav1 {
     position: absolute;
     left: 0px;
-    top: 0px;
-    height: 100px;
-    display:none;
-    margin-left:-45px;
+    width: 285px;
+    height: 870px;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: #040117;
 }
-.DropHistory_item{
-    position:relative;
-    border:3px solid #ff0000;
+/*nav_link*/
+.nav_link {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    left: 35px;
+    margin: 0px 0px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color .1s linear;
+    font-size: 20px;
+    width:250px;
+    top:200px;
+    background-color:#040117;
+
+
+    display: inline-block;
+    padding: 5px 15px; /* Поля */
+    text-decoration: none; /* Убираем подчёркивание */
 }
-.DropHistory_item:hover> .case{
-    display:block;
+.nav_link:hover{
+    text-decoration: none;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Тень */
+    background: linear-gradient(to bottom, #fcfff4, #e9e9ce); /* Градиент */
+    color: #a00;
 }
-.DropHistory{
-    width:100%;
-    height:100px;
-    display:flex;
-    background-color:gray;
-    padding:5px 0 5px 5px;
+.nav_link:after {
+    text-decoration: none;
 }
-.weapon {
-    height: 100px;
+.nav_link:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fce38a;
+    opacity: 0;
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    transition: opacity .1s linear;
+}
+.drop_history {
+    background-color:#040117;
+    height: inherit;
+    width:146px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    float: right;
+}
+.drop{
+    position:absolute;
+    top:60px;
+    font-size:21px;
+    color:#ffffff;
+}
+.case_image_1 {
+    position: absolute;
+    top: 200px;
+}
+.case_image_2 {
+    position: absolute;
+    top: 238px;
+}
+.case_image_3 {
+    position: absolute;
+    top: 276px;
+}
+.case_image_4 {
+    position: absolute;
+    top: 314px;
+}
+.case_image_5 {
+    position: absolute;
+    top: 356px;
+    text-decoration: none;
 }
