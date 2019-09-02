@@ -1,42 +1,15 @@
-﻿@{
-    ViewBag.Title = "Кейсы CS:GO";
+﻿@using Microsoft.AspNet.Identity
+@{
+                ViewBag.Title = "Кейсы CS:GO";
 }
-@*<div class="Home">
-        <h1>Home</h1>
-            <div class="DropHistory_item">
-                <h1>Home</h1>
-                    <img class="weapon" src="~/Content/img/512fx384f.png" />
-                    <img class="case" src="@Url.Action("Image","Home",new { caseName=Count-i})" />
-                </div>
-    </div>*@
-<div class="header">
-    <div class="container">
-        <div class="">
-            <!--<div class="header_logo">123</div>-->
-            <nav class="nav1">
-                <img class="case_image_1" src="~/Content/img/play.png" width="38" height="38" />
-                <a class="nav_link" href="#">Кейсы</a>
-                <br />
-                <img class="case_image_2" src="~/Content/img/profile_png_1114172.png" width="38" height="35" />
-                <a class="nav_link" href="#">Профиль</a>
-                <br />
-                <img class="case_image_3" src="~/Content/img/57d3d0a9273fd157136714c9.png" width="35" height="35" />
-                <a class="nav_link" href="#">Инвентарь</a>
-                <br />
-                <img class="case_image_4" src="~/Content/img/5ad038f54b434162bd5e7e3c.png" width="35" height="35" />
-                <a class="nav_link" href="#">Топ игроков</a>
-                <br />
-                <img class="case_image_5" src="~/Content/img/faq-png-icon-1.png" width="35" height="35" />
-                <a class="nav_link" href="#">Информация</a>
-                <br />
-            </nav>
+<div class="drop_history">
+    <h1 class="drop">История дропа</h1>
+    <div class="drop_item">
+        <img class="drop_img" src="~/Content/img/512fx384f.png" />
+        <div>
+            <span class="item_name">Ауг хамелеон</span>
+            <br />
+            <span class="user_name">@User.Identity.GetUserName()</span>
         </div>
-    </div>
-</div>
-<div class="intro">
-    <div class="drop_history">
-        <h1 class="drop">
-        История дропа
-        </h1>
     </div>
 </div>

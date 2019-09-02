@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="08f2190e12a74f8cbd9dc6e976d6dcca" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Case" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DropHistory" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.possSkinsInCase" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Rare" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SkinN" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Type" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.WeapN" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Weapon" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__DropHisto__CaseI__0A688BB1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__possSkins__Casei__282DF8C2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__DropHisto__Weapo__09746778" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__possSkins__Weapo__29221CFB" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Weapon__SkinName__2CBDA3B5" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Weapon__TypeId__2DB1C7EE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Weapon__WeapNId__2EA5EC27" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -12,47 +12,89 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="Image" Type="image" />
+          <Property Name="Price" Type="float" />
         </EntityType>
-        <EntityType Name="NameW">
+        <EntityType Name="DropHistory">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="50" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="WeaponId" Type="int" Nullable="false" />
+          <Property Name="CaseId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="possSkinsInCase">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
           <Property Name="Caseid" Type="int" />
           <Property Name="Weaponid" Type="int" />
+        </EntityType>
+        <EntityType Name="Rare">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="21" Nullable="false" />
         </EntityType>
         <EntityType Name="SkinN">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Type">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="23" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WeapN">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Weapon">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="TypeId" Type="int" />
-          <Property Name="SkinNameId" Type="int" />
-          <Property Name="Image" Type="image" />
-          <Property Name="WeaponNId" Type="int" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="SkinNameId" Type="int" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+          <Property Name="WeapNId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Rare" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK__DropHisto__CaseI__0A688BB1">
+          <End Role="Case" Type="Self.Case" Multiplicity="1" />
+          <End Role="DropHistory" Type="Self.DropHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DropHistory">
+              <PropertyRef Name="CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DropHisto__Weapo__09746778">
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="1" />
+          <End Role="DropHistory" Type="Self.DropHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Weapon">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DropHistory">
+              <PropertyRef Name="WeaponId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__possSkins__Casei__282DF8C2">
           <End Role="Case" Type="Self.Case" Multiplicity="0..1" />
           <End Role="possSkinsInCase" Type="Self.possSkinsInCase" Multiplicity="*" />
@@ -77,8 +119,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Weapon__SkinName__503BEA1C">
-          <End Role="SkinN" Type="Self.SkinN" Multiplicity="0..1" />
+        <Association Name="FK__Weapon__SkinName__2CBDA3B5">
+          <End Role="SkinN" Type="Self.SkinN" Multiplicity="1" />
           <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SkinN">
@@ -89,8 +131,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Weapon__TypeId__14270015">
-          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+        <Association Name="FK__Weapon__TypeId__2DB1C7EE">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
           <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type">
@@ -101,25 +143,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Weapon__WeaponNI__4F47C5E3">
-          <End Role="NameW" Type="Self.NameW" Multiplicity="0..1" />
+        <Association Name="FK__Weapon__WeapNId__2EA5EC27">
+          <End Role="WeapN" Type="Self.WeapN" Multiplicity="1" />
           <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="NameW">
+            <Principal Role="WeapN">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Weapon">
-              <PropertyRef Name="WeaponNId" />
+              <PropertyRef Name="WeapNId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="NameW" EntityType="Self.NameW" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DropHistory" EntityType="Self.DropHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="possSkinsInCase" EntityType="Self.possSkinsInCase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rare" EntityType="Self.Rare" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SkinN" EntityType="Self.SkinN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WeapN" EntityType="Self.WeapN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Weapon" EntityType="Self.Weapon" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__DropHisto__CaseI__0A688BB1" Association="Self.FK__DropHisto__CaseI__0A688BB1">
+            <End Role="Case" EntitySet="Case" />
+            <End Role="DropHistory" EntitySet="DropHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DropHisto__Weapo__09746778" Association="Self.FK__DropHisto__Weapo__09746778">
+            <End Role="Weapon" EntitySet="Weapon" />
+            <End Role="DropHistory" EntitySet="DropHistory" />
+          </AssociationSet>
           <AssociationSet Name="FK__possSkins__Casei__282DF8C2" Association="Self.FK__possSkins__Casei__282DF8C2">
             <End Role="Case" EntitySet="Case" />
             <End Role="possSkinsInCase" EntitySet="possSkinsInCase" />
@@ -128,16 +180,16 @@
             <End Role="Weapon" EntitySet="Weapon" />
             <End Role="possSkinsInCase" EntitySet="possSkinsInCase" />
           </AssociationSet>
-          <AssociationSet Name="FK__Weapon__SkinName__503BEA1C" Association="Self.FK__Weapon__SkinName__503BEA1C">
+          <AssociationSet Name="FK__Weapon__SkinName__2CBDA3B5" Association="Self.FK__Weapon__SkinName__2CBDA3B5">
             <End Role="SkinN" EntitySet="SkinN" />
             <End Role="Weapon" EntitySet="Weapon" />
           </AssociationSet>
-          <AssociationSet Name="FK__Weapon__TypeId__14270015" Association="Self.FK__Weapon__TypeId__14270015">
+          <AssociationSet Name="FK__Weapon__TypeId__2DB1C7EE" Association="Self.FK__Weapon__TypeId__2DB1C7EE">
             <End Role="Type" EntitySet="Type" />
             <End Role="Weapon" EntitySet="Weapon" />
           </AssociationSet>
-          <AssociationSet Name="FK__Weapon__WeaponNI__4F47C5E3" Association="Self.FK__Weapon__WeaponNI__4F47C5E3">
-            <End Role="NameW" EntitySet="NameW" />
+          <AssociationSet Name="FK__Weapon__WeapNId__2EA5EC27" Association="Self.FK__Weapon__WeapNId__2EA5EC27">
+            <End Role="WeapN" EntitySet="WeapN" />
             <End Role="Weapon" EntitySet="Weapon" />
           </AssociationSet>
         </EntityContainer>
@@ -153,57 +205,91 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Price" Type="Double" />
+          <NavigationProperty Name="DropHistory" Relationship="Self.FK__DropHisto__CaseI__0A688BB1" FromRole="Case" ToRole="DropHistory" />
           <NavigationProperty Name="possSkinsInCase" Relationship="Self.FK__possSkins__Casei__282DF8C2" FromRole="Case" ToRole="possSkinsInCase" />
         </EntityType>
-        <EntityType Name="NameW">
+        <EntityType Name="DropHistory">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Weapon" Relationship="Self.FK__Weapon__WeaponNI__4F47C5E3" FromRole="NameW" ToRole="Weapon" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WeaponId" Type="Int32" Nullable="false" />
+          <Property Name="CaseId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Case" Relationship="Self.FK__DropHisto__CaseI__0A688BB1" FromRole="DropHistory" ToRole="Case" />
+          <NavigationProperty Name="Weapon" Relationship="Self.FK__DropHisto__Weapo__09746778" FromRole="DropHistory" ToRole="Weapon" />
         </EntityType>
         <EntityType Name="possSkinsInCase">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Caseid" Type="Int32" />
           <Property Name="Weaponid" Type="Int32" />
           <NavigationProperty Name="Case" Relationship="Self.FK__possSkins__Casei__282DF8C2" FromRole="possSkinsInCase" ToRole="Case" />
           <NavigationProperty Name="Weapon" Relationship="Self.FK__possSkins__Weapo__29221CFB" FromRole="possSkinsInCase" ToRole="Weapon" />
+        </EntityType>
+        <EntityType Name="Rare">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="21" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="SkinN">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Weapon" Relationship="Self.FK__Weapon__SkinName__503BEA1C" FromRole="SkinN" ToRole="Weapon" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Weapon" Relationship="Self.FK__Weapon__SkinName__2CBDA3B5" FromRole="SkinN" ToRole="Weapon" />
         </EntityType>
         <EntityType Name="Type">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Weapon" Relationship="Self.FK__Weapon__TypeId__14270015" FromRole="Type" ToRole="Weapon" />
+          <Property Name="Name" Type="String" MaxLength="23" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Weapon" Relationship="Self.FK__Weapon__TypeId__2DB1C7EE" FromRole="Type" ToRole="Weapon" />
+        </EntityType>
+        <EntityType Name="WeapN">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Weapon" Relationship="Self.FK__Weapon__WeapNId__2EA5EC27" FromRole="WeapN" ToRole="Weapon" />
         </EntityType>
         <EntityType Name="Weapon">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="TypeId" Type="Int32" />
-          <Property Name="SkinNameId" Type="Int32" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="WeaponNId" Type="Int32" />
-          <NavigationProperty Name="NameW" Relationship="Self.FK__Weapon__WeaponNI__4F47C5E3" FromRole="Weapon" ToRole="NameW" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="SkinNameId" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="WeapNId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Rare" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DropHistory" Relationship="Self.FK__DropHisto__Weapo__09746778" FromRole="Weapon" ToRole="DropHistory" />
           <NavigationProperty Name="possSkinsInCase" Relationship="Self.FK__possSkins__Weapo__29221CFB" FromRole="Weapon" ToRole="possSkinsInCase" />
-          <NavigationProperty Name="SkinN" Relationship="Self.FK__Weapon__SkinName__503BEA1C" FromRole="Weapon" ToRole="SkinN" />
-          <NavigationProperty Name="Type" Relationship="Self.FK__Weapon__TypeId__14270015" FromRole="Weapon" ToRole="Type" />
+          <NavigationProperty Name="SkinN" Relationship="Self.FK__Weapon__SkinName__2CBDA3B5" FromRole="Weapon" ToRole="SkinN" />
+          <NavigationProperty Name="Type" Relationship="Self.FK__Weapon__TypeId__2DB1C7EE" FromRole="Weapon" ToRole="Type" />
+          <NavigationProperty Name="WeapN" Relationship="Self.FK__Weapon__WeapNId__2EA5EC27" FromRole="Weapon" ToRole="WeapN" />
         </EntityType>
+        <Association Name="FK__DropHisto__CaseI__0A688BB1">
+          <End Role="Case" Type="Self.Case" Multiplicity="1" />
+          <End Role="DropHistory" Type="Self.DropHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DropHistory">
+              <PropertyRef Name="CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__possSkins__Casei__282DF8C2">
           <End Role="Case" Type="Self.Case" Multiplicity="0..1" />
           <End Role="possSkinsInCase" Type="Self.possSkinsInCase" Multiplicity="*" />
@@ -216,15 +302,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Weapon__WeaponNI__4F47C5E3">
-          <End Role="NameW" Type="Self.NameW" Multiplicity="0..1" />
-          <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
+        <Association Name="FK__DropHisto__Weapo__09746778">
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="1" />
+          <End Role="DropHistory" Type="Self.DropHistory" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="NameW">
+            <Principal Role="Weapon">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Weapon">
-              <PropertyRef Name="WeaponNId" />
+            <Dependent Role="DropHistory">
+              <PropertyRef Name="WeaponId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -240,8 +326,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Weapon__SkinName__503BEA1C">
-          <End Role="SkinN" Type="Self.SkinN" Multiplicity="0..1" />
+        <Association Name="FK__Weapon__SkinName__2CBDA3B5">
+          <End Role="SkinN" Type="Self.SkinN" Multiplicity="1" />
           <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SkinN">
@@ -252,8 +338,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Weapon__TypeId__14270015">
-          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+        <Association Name="FK__Weapon__TypeId__2DB1C7EE">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
           <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type">
@@ -264,31 +350,53 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Weapon__WeapNId__2EA5EC27">
+          <End Role="WeapN" Type="Self.WeapN" Multiplicity="1" />
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeapN">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Weapon">
+              <PropertyRef Name="WeapNId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Base" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Case" EntityType="Self.Case" />
-          <EntitySet Name="NameW" EntityType="Self.NameW" />
+          <EntitySet Name="DropHistory" EntityType="Self.DropHistory" />
           <EntitySet Name="possSkinsInCase" EntityType="Self.possSkinsInCase" />
+          <EntitySet Name="Rare" EntityType="Self.Rare" />
           <EntitySet Name="SkinN" EntityType="Self.SkinN" />
           <EntitySet Name="Type" EntityType="Self.Type" />
+          <EntitySet Name="WeapN" EntityType="Self.WeapN" />
           <EntitySet Name="Weapon" EntityType="Self.Weapon" />
+          <AssociationSet Name="FK__DropHisto__CaseI__0A688BB1" Association="Self.FK__DropHisto__CaseI__0A688BB1">
+            <End Role="Case" EntitySet="Case" />
+            <End Role="DropHistory" EntitySet="DropHistory" />
+          </AssociationSet>
           <AssociationSet Name="FK__possSkins__Casei__282DF8C2" Association="Self.FK__possSkins__Casei__282DF8C2">
             <End Role="Case" EntitySet="Case" />
             <End Role="possSkinsInCase" EntitySet="possSkinsInCase" />
           </AssociationSet>
-          <AssociationSet Name="FK__Weapon__WeaponNI__4F47C5E3" Association="Self.FK__Weapon__WeaponNI__4F47C5E3">
-            <End Role="NameW" EntitySet="NameW" />
+          <AssociationSet Name="FK__DropHisto__Weapo__09746778" Association="Self.FK__DropHisto__Weapo__09746778">
             <End Role="Weapon" EntitySet="Weapon" />
+            <End Role="DropHistory" EntitySet="DropHistory" />
           </AssociationSet>
           <AssociationSet Name="FK__possSkins__Weapo__29221CFB" Association="Self.FK__possSkins__Weapo__29221CFB">
             <End Role="Weapon" EntitySet="Weapon" />
             <End Role="possSkinsInCase" EntitySet="possSkinsInCase" />
           </AssociationSet>
-          <AssociationSet Name="FK__Weapon__SkinName__503BEA1C" Association="Self.FK__Weapon__SkinName__503BEA1C">
+          <AssociationSet Name="FK__Weapon__SkinName__2CBDA3B5" Association="Self.FK__Weapon__SkinName__2CBDA3B5">
             <End Role="SkinN" EntitySet="SkinN" />
             <End Role="Weapon" EntitySet="Weapon" />
           </AssociationSet>
-          <AssociationSet Name="FK__Weapon__TypeId__14270015" Association="Self.FK__Weapon__TypeId__14270015">
+          <AssociationSet Name="FK__Weapon__TypeId__2DB1C7EE" Association="Self.FK__Weapon__TypeId__2DB1C7EE">
             <End Role="Type" EntitySet="Type" />
+            <End Role="Weapon" EntitySet="Weapon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Weapon__WeapNId__2EA5EC27" Association="Self.FK__Weapon__WeapNId__2EA5EC27">
+            <End Role="WeapN" EntitySet="WeapN" />
             <End Role="Weapon" EntitySet="Weapon" />
           </AssociationSet>
         </EntityContainer>
@@ -304,14 +412,17 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NameW">
-            <EntityTypeMapping TypeName="Model.NameW">
-              <MappingFragment StoreEntitySet="NameW">
+          <EntitySetMapping Name="DropHistory">
+            <EntityTypeMapping TypeName="Model.DropHistory">
+              <MappingFragment StoreEntitySet="DropHistory">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="WeaponId" ColumnName="WeaponId" />
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -319,9 +430,16 @@
             <EntityTypeMapping TypeName="Model.possSkinsInCase">
               <MappingFragment StoreEntitySet="possSkinsInCase">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Caseid" ColumnName="Caseid" />
                 <ScalarProperty Name="Weaponid" ColumnName="Weaponid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rare">
+            <EntityTypeMapping TypeName="Model.Rare">
+              <MappingFragment StoreEntitySet="Rare">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -341,6 +459,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="WeapN">
+            <EntityTypeMapping TypeName="Model.WeapN">
+              <MappingFragment StoreEntitySet="WeapN">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Weapon">
             <EntityTypeMapping TypeName="Model.Weapon">
               <MappingFragment StoreEntitySet="Weapon">
@@ -348,7 +474,9 @@
                 <ScalarProperty Name="TypeId" ColumnName="TypeId" />
                 <ScalarProperty Name="SkinNameId" ColumnName="SkinNameId" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="WeaponNId" ColumnName="WeaponNId" />
+                <ScalarProperty Name="WeapNId" ColumnName="WeapNId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Rare" ColumnName="Rare" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

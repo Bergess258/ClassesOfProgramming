@@ -15,7 +15,6 @@ namespace WebApplication2.Models
     public partial class possSkinsInCase
     {
         public int Id { get; set; }
-        public string UserId { get; set; }
         public Nullable<int> Caseid { get; set; }
         public Nullable<int> Weaponid { get; set; }
     

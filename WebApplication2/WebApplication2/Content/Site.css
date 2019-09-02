@@ -1,8 +1,9 @@
 ﻿body {
-    margin:0;
+    margin: 0;
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     color: #60606e;
+    background-color: #0e0e2b;
 }
 *,
 *:before,
@@ -17,13 +18,6 @@ h1, h2,h3,h4,h5,h6{
     width:100%;
     max-width:1140px;
     margin:0 auto;
-}
-/*Intro*/
-.intro {
-    width: 100%;
-    height: 850px;
-    background-color:#0e0e2b;
-    background-position:center;
 }
 /*Header*/
 .header{
@@ -46,40 +40,31 @@ h1, h2,h3,h4,h5,h6{
     position: absolute;
     left: 0px;
     width: 285px;
-    height: 870px;
+    height: 100vh;
     font-size: 14px;
     text-transform: uppercase;
     background-color: #040117;
 }
 /*nav_link*/
 .nav_link {
-    position: relative;
-    display: inline-block;
     vertical-align: top;
-    left: 35px;
-    margin: 0px 0px;
     color: #ffffff;
-    text-decoration: none;
     transition: color .1s linear;
     font-size: 20px;
-    width:250px;
-    top:200px;
+    width:100%;
     background-color:#040117;
-
-
-    display: inline-block;
     padding: 5px 15px; /* Поля */
-    text-decoration: none; /* Убираем подчёркивание */
+    margin:auto;
 }
 .nav_link:hover{
     text-decoration: none;
     box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Тень */
     background: linear-gradient(to bottom, #fcfff4, #e9e9ce); /* Градиент */
-    color: #a00;
 }
-.nav_link:after {
-    text-decoration: none;
-}
+    .nav_link:hover > a {
+        color: #a00;
+        text-decoration: none;
+    }
 .nav_link:after {
     content: "";
     display: block;
@@ -94,39 +79,51 @@ h1, h2,h3,h4,h5,h6{
     z-index: 1;
     transition: opacity .1s linear;
 }
+.nav_text {
+    text-decoration: none;
+    color: #ffffff;
+}
 .drop_history {
-    background-color:#040117;
-    height: inherit;
-    width:146px;
-    display: flex;
+    padding: 10px;
+    background-color: #040117;
+    text-wrap:none;
+    display:table;
+    width:270px;
+    text-align:center;
+    height:100vh;
     justify-content: space-between;
     align-items: center;
     float: right;
+    background-color: #040117;
 }
 .drop{
-    position:absolute;
     top:60px;
     font-size:21px;
     color:#ffffff;
 }
-.case_image_1 {
-    position: absolute;
-    top: 200px;
+.nav_img {
+    width:35px;
 }
-.case_image_2 {
-    position: absolute;
-    top: 238px;
+.prof-img{
+    width:50%;
+    text-align:center;
+    border-radius:100%;
 }
-.case_image_3 {
-    position: absolute;
-    top: 276px;
+.forimg{
+    text-align:center;
 }
-.case_image_4 {
-    position: absolute;
-    top: 314px;
+.drop_item{
+    color:white;
+    display:flex;
+    height:10%;
+    position:relative;
 }
-.case_image_5 {
-    position: absolute;
-    top: 356px;
-    text-decoration: none;
+.drop_img{
+    width:50%;
+}
+.item_name {
+    width: 100%;
+}
+.user_name {
+    width:25%;
 }

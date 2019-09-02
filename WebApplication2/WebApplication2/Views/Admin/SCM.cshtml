@@ -1,0 +1,43 @@
+﻿@model WebApplication2.Models.Case
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SCM</title>
+</head>
+<body>
+    @using (Html.BeginForm("SCM", "Admin", FormMethod.Post, new { role = "form", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Case</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <div class="con-item" style="width:100%">
+            <span class="item-title">Загрузка нового изображения</span>
+            <input id="profile" name="profile" type="file" title="Нажмите, чтобы изменить. Изменистя после сохранения" />
+            <br />
+            <img src="@Url.Action("Photo","Admin", new { id=Model.Id})" style="height:10vh;"/>
+            <br />
+            <span class="item-title">@Html.TextBoxFor(model => model.Name)</span>
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+    <div>
+        @Html.ActionLink("Back to List", "CaseManagment")
+    </div>
+    <link href="~/Content/AdminMain.css" rel="stylesheet" />
+</body>
+</html>

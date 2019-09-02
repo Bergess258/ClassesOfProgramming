@@ -1,0 +1,49 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <aside class="sidebar">
+            <section class="user-card">
+                <div style="padding-top:2em;padding-bottom:2em;">
+                    <div class="avatar">
+                        <img src="~/Content/img/AdminIcon.jpg" class="" />
+                    </div>
+                </div>
+            </section>
+        </aside>
+        <section class="profile-container">
+            <div class="con-item">
+                @Html.ActionLink("A", "CaseManagment", "Admin", htmlAttributes: new { @class = "item-link" })
+                <img src="~/Content/img/csgo-case-png-2.png.fe662af650c33392712b926d8c9г6dcda.png" />
+                <br />
+                <span class="item-title">Кейсы</span>
+            </div>
+            <div class="con-item">
+                <img src="~/Content/img/csgo-desert-eagle-png-14.png" />
+                <br />
+                <span class="item-title">Оружие</span>
+            </div>
+            <div class="con-item">
+                <img src="~/Content/img/Statistic.png" />
+                <br />
+                <span class="item-title">Статистика</span>
+            </div>
+            <div class="con-item">
+                <img src="~/Content/img/Statistic.png" />
+                <br />
+                <span class="item-title">Статистика</span>
+            </div>
+        </section>
+    </div>
+    <link href="~/Content/AdminMain.css" rel="stylesheet" />
+</body>
+</html>

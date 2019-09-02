@@ -17,13 +17,17 @@ namespace WebApplication2.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Case()
         {
+            this.DropHistory = new HashSet<DropHistory>();
             this.possSkinsInCase = new HashSet<possSkinsInCase>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
         public byte[] Image { get; set; }
+        public Nullable<double> Price { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DropHistory> DropHistory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<possSkinsInCase> possSkinsInCase { get; set; }
     }

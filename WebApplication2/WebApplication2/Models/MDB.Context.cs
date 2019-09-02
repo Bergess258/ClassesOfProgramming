@@ -26,10 +26,12 @@ namespace WebApplication2.Models
         }
     
         public virtual DbSet<Case> Case { get; set; }
-        public virtual DbSet<NameW> NameW { get; set; }
+        public virtual DbSet<DropHistory> DropHistory { get; set; }
         public virtual DbSet<possSkinsInCase> possSkinsInCase { get; set; }
+        public virtual DbSet<Rare> Rare { get; set; }
         public virtual DbSet<SkinN> SkinN { get; set; }
         public virtual DbSet<Type> Type { get; set; }
+        public virtual DbSet<WeapN> WeapN { get; set; }
         public virtual DbSet<Weapon> Weapon { get; set; }
     }
 }
