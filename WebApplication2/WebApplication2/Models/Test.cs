@@ -5,10 +5,10 @@ namespace WebApplication2.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class Test : DbContext
+    public partial class Base : DbContext
     {
-        public Test()
-            : base("name=TestBase")
+        public Base()
+            : base("name=Base")
         {
         }
 
