@@ -216,6 +216,7 @@
     <Compile Include="Models\SkinN.cs">
       <DependentUpon>MDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Test.cs" />
     <Compile Include="Models\Type.cs">
       <DependentUpon>MDB.tt</DependentUpon>
     </Compile>
