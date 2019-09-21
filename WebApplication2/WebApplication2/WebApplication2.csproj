@@ -185,6 +185,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909041254247_startrack.cs" />
+    <Compile Include="Migrations\201909041254247_startrack.Designer.cs">
+      <DependentUpon>201909041254247_startrack.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminAccViewModels.cs" />
@@ -236,6 +240,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\512fx384f.png" />
+    <Content Include="Content\img\ak47eb.png" />
     <Content Include="Content\img\CS GO Logo Wallpapers HD %281%29.jpg" />
     <Content Include="Content\img\Statistic.png" />
     <Content Include="Content\img\57d3d0a9273fd157136714c9.png" />
@@ -246,6 +251,7 @@
     <Content Include="Content\img\faq-png-icon-1.png" />
     <Content Include="Content\img\play.png" />
     <Content Include="Content\img\profile_png_1114172.png" />
+    <Content Include="Content\weapon.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -320,8 +326,12 @@
     <Content Include="Views\My\Index.cshtml" />
     <Content Include="Views\My\MasMultiply.cshtml" />
     <Content Include="Views\Admin\CaseManagment.cshtml" />
+    <Content Include="Views\Admin\AddCase.cshtml" />
+    <Content Include="Views\Admin\AddWeap.cshtml" />
     <None Include="Views\Admin\MainAdmin.cshtml" />
     <Content Include="Views\Admin\SCM.cshtml" />
+    <Content Include="Views\Admin\WeapManag.cshtml" />
+    <Content Include="Views\Home\WeaponView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -341,6 +351,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201909041254247_startrack.resx">
+      <DependentUpon>201909041254247_startrack.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

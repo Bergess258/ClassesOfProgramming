@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -14,24 +15,49 @@ namespace WebApplication2
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            //string fileName = @"C:\Users\parsh\source\repos\NewRepo\WebApplication2\WebApplication2\Content\img\512fx384f.png";
-            //FileInfo fileInfo = new FileInfo(fileName);
-            //long length = fileInfo.Length;
-            //FileStream reader = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-            //BinaryReader br = new BinaryReader(reader);
-            //byte[] temp = br.ReadBytes((int)length);
-            //Base context = new Base();
-            //NameW nameW = context.NameW.Where(p => p.Id == 0).ToList()[0];
-            //SkinN Skin = context.SkinN.Where(p => p.Id == 0).ToList()[0];
-            //SkinN Skin = context.SkinN.Where(p => p.Id == 0).ToList()[0];
-            //Type type = context.Type.Where(p => p.Id == 0).ToList()[0];
-            //Weapon tempW = new Weapon();
-            //tempW.TypeId = 0;
-            //tempW.WeaponNId = 0;
-            //tempW.SkinNameId = 0;
-            //tempW.Image = temp;
-            //context.Weapon.Add(tempW);
-            //context.SaveChanges();
+            using (FileStream fstream = new FileStream(@"C:\Users\parsh\Source\Repos\NewRepo\WebApplication2\WebApplication2\bin\output2.txt", FileMode.Open))
+            {
+                using (StreamReader wr = new StreamReader(fstream))
+                {
+                    Base context = new Base();
+                    string s = wr.ReadLine();
+                    while (!wr.EndOfStream)
+                    {
+
+                        if (context.SkinN.Where(x => x.Name == s).Count() == 0)
+                        {
+                            context.SkinN.Add(new SkinN() { Name = s, Id = context.SkinN.Count() });
+                            context.SaveChanges();
+                        }
+                        s = wr.ReadLine();
+                    }
+                    
+                }
+            }
+            //using (FileStream fstream = new FileStream(@"C:\Users\parsh\Source\Repos\NewRepo\WebApplication2\WebApplication2\bin\output3.txt", FileMode.Open))
+            //{
+            //    using (StreamReader wr = new StreamReader(fstream))
+            //    {
+            //        Base context = new Base();
+            //        string s = wr.ReadLine();
+            //        int prefs = -1;
+            //        int[] mas = new int[53];
+            //        while (!wr.EndOfStream)
+            //        {
+
+            //            if (context.WeapN.Where(x => x.Name == s).Count() == 1)
+            //            {
+            //                ++mas[prefs];
+            //            }
+            //            else
+            //            {
+            //                context.WeapN.Add(new WeapN() { Name = s });
+            //                ++mas[++prefs];
+            //            }
+            //            s = wr.ReadLine();
+            //        }
+            //    }
+            //}
         }
     }
 }

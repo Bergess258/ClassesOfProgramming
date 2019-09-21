@@ -5,11 +5,6 @@
     color: #60606e;
     background-color: #0e0e2b;
 }
-*,
-*:before,
-*:after{
-    box-sizing: border-box;
-}
 h1, h2,h3,h4,h5,h6{
     margin:0;
 }
@@ -88,7 +83,7 @@ h1, h2,h3,h4,h5,h6{
     background-color: #040117;
     text-wrap:none;
     display:table;
-    width:270px;
+    width:200px;
     text-align:center;
     height:100vh;
     justify-content: space-between;
@@ -112,18 +107,33 @@ h1, h2,h3,h4,h5,h6{
 .forimg{
     text-align:center;
 }
-.drop_item{
-    color:white;
-    display:flex;
-    height:10%;
-    position:relative;
+.drop_item {
+    color: white;
+    margin-top: 10px;
+    text-align: center;
 }
-.drop_img{
-    width:50%;
-}
-.item_name {
+.drop_img {
     width: 100%;
 }
-.user_name {
-    width:25%;
+.item_name {
+    display: none;
+    font-size: 16px;
 }
+.user_name {
+    display: none;
+    font-size: 16px;
+}
+.drop_item:hover > .item_name{
+    display:block;
+    box-shadow:0 -9px 10px -10px #000000;
+}
+.drop_item:hover > .user_name {
+    display: block;
+}
+/*colors:
+#b0c3d9
+#5e98d9
+#4b69ff
+#8847ff
+#eb4b4b*/
+/*onmouseover="this.style.backgroundColor = '#4b69ff'; this.style.boxShadow = '0 0 2px 7px #4b69ff';" onmouseout="this.style.backgroundColor = 'transparent'; this.style.boxShadow = '0 0 0px 0px #4b69ff';"*/

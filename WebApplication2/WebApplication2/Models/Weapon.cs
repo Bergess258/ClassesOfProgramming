@@ -30,7 +30,7 @@ namespace WebApplication2.Models
         public int WeapNId { get; set; }
 
         public double Price { get; set; }
-
+        public bool Startrack { get; set; }
         public int Rare { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

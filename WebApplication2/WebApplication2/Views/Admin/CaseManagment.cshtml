@@ -13,17 +13,21 @@
 <body>
     @using (Html.BeginForm("CaseManagment", "Admin", FormMethod.Post, new { role = "form", enctype = "multipart/form-data" }))
     {
-        <section class="profile-container" style="width:98%; height:100vh">
-            @foreach (WebApplication2.Models.Case item in Model.Cases)
-            {
-                <div class="con-item" style="width:20%">
-                    @Html.ActionLink("A", "SCM", "Admin", new { id = item.Id }, new { @class = "item-link" })
-                    <img src="@Url.Action("Photo","Admin", new { id = item.Id})" />
-                    <br />
-                    <span class="item-title">@item.Name</span>
-                </div>
-            }
-        </section>
+    <section class="profile-container" style="width:98%; height:100vh">
+        <div>
+
+        </div>
+        @foreach (WebApplication2.Models.Case item in Model.Cases)
+        {
+            <div class="con-item" style="width:20%">
+                @Html.ActionLink("A", "SCM", "Admin", new { id = item.Id }, new { @class = "item-link" })
+                <img src="@Url.Action("Photo","Admin", new { id = item.Id})" />
+                <br />
+                <span class="item-title">@item.Name</span>
+            </div>
+        }
+
+    </section>
     }
     <link href="~/Content/AdminMain.css" rel="stylesheet" />
 </body>

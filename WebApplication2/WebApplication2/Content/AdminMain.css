@@ -49,7 +49,6 @@
     }
 .username {
     color: #333;
-    display: block;
     padding: 0 1em;
     word-wrap: break-word;
 }

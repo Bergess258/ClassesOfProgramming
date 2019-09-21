@@ -3,13 +3,39 @@
                 ViewBag.Title = "Кейсы CS:GO";
 }
 <div class="drop_history">
+
     <h1 class="drop">История дропа</h1>
-    <div class="drop_item">
-        <img class="drop_img" src="~/Content/img/512fx384f.png" />
-        <div>
-            <span class="item_name">Ауг хамелеон</span>
+    @switch (ViewBag.Title)
+    {
+        case 0:
+
+            break;
+        case 4:
+
+            break;
+        case 1:
+
+            break;
+        case 2:
+
+            break;
+        case 3:
+        
+            break;
+        case 5:
+
+            break;
+        case 6:
+
+            break;
+        default:
+        <div class="drop_item" onmouseover="this.style.backgroundColor='#4b69ff' ; this.style.boxShadow='0 0 2px 7px #4b69ff' ;" onmouseout="this.style.backgroundColor = 'transparent'; this.style.boxShadow = '0 0 0px 0px #4b69ff';">
+            <span class="user_name">Bergess</span>
             <br />
-            <span class="user_name">@User.Identity.GetUserName()</span>
+            <img class="drop_img" src="~/Content/img/ak47eb.png" />
+            <br />
+            <span class="item_name">AK-47 Элитное снаряжение</span>
         </div>
-    </div>
+            break;
+    }
 </div>

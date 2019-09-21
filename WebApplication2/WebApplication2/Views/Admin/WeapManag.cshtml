@@ -1,0 +1,33 @@
+﻿@model List<WebApplication2.Models.Weapon>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>WeapManag</title>
+</head>
+<body>
+    @using (Html.BeginForm("WeapManag", "Admin", FormMethod.Post, new { role = "form", enctype = "multipart/form-data" }))
+    {
+        <section class="profile-container" style="width:98%; height:100vh">
+            <div>
+
+            </div>
+            @foreach (WebApplication2.Models.Weapon item in Model)
+            {
+                <div class="con-item" style="width:20%">
+                    @Html.ActionLink("A", "SCM", "Admin", new { id = item.Id }, new { @class = "item-link" })
+                    <img src="@Url.Action("WeapPhoto","Admin", new { id = item.Id})" />
+                    <br />
+                    <span class="item-title">@item.WeapN.Name @item.SkinN.Name</span>
+                </div>
+            }
+        </section>
+    }
+    <link href="~/Content/AdminMain.css" rel="stylesheet" />
+</body>
+</html>
