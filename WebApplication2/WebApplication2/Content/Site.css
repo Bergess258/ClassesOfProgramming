@@ -129,6 +129,7 @@ h1, h2,h3,h4,h5,h6{
 }
 .drop_item:hover > .user_name {
     display: block;
+    box-shadow: 0 9px 10px -10px #000000;
 }
 /*colors:
 #b0c3d9
