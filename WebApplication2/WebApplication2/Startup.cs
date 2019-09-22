@@ -14,54 +14,54 @@ namespace WebApplication2
 
         public void Configuration(IAppBuilder app)
         {
-            List<string> WeaponN = new List<string>();
             ConfigureAuth(app);
-            using (FileStream fstream = new FileStream(@"C:\Users\parsh\Source\Repos\NewRepo\WebApplication2\WebApplication2\bin\output.txt", FileMode.Open))
-            {
-                using (StreamReader wr = new StreamReader(fstream))
-                {
-                    Base context = new Base();
+            //List<string> WeaponN = new List<string>();
+            //using (FileStream fstream = new FileStream(@"C:\Users\parsh\Source\Repos\NewRepo\WebApplication2\WebApplication2\bin\output.txt", FileMode.Open))
+            //{
+            //    using (StreamReader wr = new StreamReader(fstream))
+            //    {
+            //        Base context = new Base();
 
-                    string s = wr.ReadLine();
-                    int prefs = -1;
-                    int[] mas = new int[53];
-                    while (!wr.EndOfStream)
-                    {
-                        
-                        if (context.WeapN.Where(x=>x.Name==s).Count()==1)
-                        {
-                            ++mas[prefs]; 
-                        }
-                        else
-                        {
-                            context.WeapN.Add(new WeapN() { Name = s, Id= context.WeapN.Count()});
-                            context.SaveChanges();
-                            ++mas[++prefs];
-                            WeaponN.Add(s);
-                        }
-                        s = wr.ReadLine();
-                    }
-                    
-                }
-            }
-            using (FileStream fstream = new FileStream(@"C:\Users\parsh\Source\Repos\NewRepo\WebApplication2\WebApplication2\bin\output2.txt", FileMode.Open))
-            {
-                using (StreamReader wr = new StreamReader(fstream))
-                {
-                    Base context = new Base();
-                    string s = wr.ReadLine();
-                    while (!wr.EndOfStream)
-                    {
-                        if (context.SkinN.Where(x => x.Name == s).Count() == 0)
-                        {
-                            context.SkinN.Add(new SkinN() { Name = s, Id = context.SkinN.Count() });
-                            context.SaveChanges();
-                        }
-                        s = wr.ReadLine();
-                    }
-                    
-                }
-            }
+            //        string s = wr.ReadLine();
+            //        int prefs = -1;
+            //        int[] mas = new int[53];
+            //        while (!wr.EndOfStream)
+            //        {
+
+            //            if (context.WeapN.Where(x=>x.Name==s).Count()==1)
+            //            {
+            //                ++mas[prefs]; 
+            //            }
+            //            else
+            //            {
+            //                context.WeapN.Add(new WeapN() { Name = s, Id= context.WeapN.Count()});
+            //                context.SaveChanges();
+            //                ++mas[++prefs];
+            //                WeaponN.Add(s);
+            //            }
+            //            s = wr.ReadLine();
+            //        }
+
+            //    }
+            //}
+            //using (FileStream fstream = new FileStream(@"C:\Users\parsh\Source\Repos\NewRepo\WebApplication2\WebApplication2\bin\output2.txt", FileMode.Open))
+            //{
+            //    using (StreamReader wr = new StreamReader(fstream))
+            //    {
+            //        Base context = new Base();
+            //        string s = wr.ReadLine();
+            //        while (!wr.EndOfStream)
+            //        {
+            //            if (context.SkinN.Where(x => x.Name == s).Count() == 0)
+            //            {
+            //                context.SkinN.Add(new SkinN() { Name = s, Id = context.SkinN.Count() });
+            //                context.SaveChanges();
+            //            }
+            //            s = wr.ReadLine();
+            //        }
+
+            //    }
+            //}
             //using (FileStream fstream = new FileStream(@"C:\Users\parsh\Source\Repos\NewRepo\WebApplication2\WebApplication2\bin\output3.txt", FileMode.Open))
             //{
             //    using (StreamReader wr = new StreamReader(fstream))
