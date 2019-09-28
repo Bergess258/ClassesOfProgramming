@@ -185,27 +185,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909041254247_startrack.cs" />
-    <Compile Include="Migrations\201909041254247_startrack.Designer.cs">
-      <DependentUpon>201909041254247_startrack.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminAccViewModels.cs" />
     <Compile Include="Models\Case.cs">
       <DependentUpon>MDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Context.cs" />
     <Compile Include="Models\DropHistory.cs">
       <DependentUpon>MDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\MDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MDB.Context.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\MDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -220,7 +212,6 @@
     <Compile Include="Models\SkinN.cs">
       <DependentUpon>MDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Test.cs" />
     <Compile Include="Models\Type.cs">
       <DependentUpon>MDB.tt</DependentUpon>
     </Compile>
@@ -351,11 +342,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909041254247_startrack.resx">
-      <DependentUpon>201909041254247_startrack.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

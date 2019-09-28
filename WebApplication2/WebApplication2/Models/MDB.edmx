@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Case">
           <Key>
             <PropertyRef Name="Id" />
@@ -69,7 +69,8 @@
           <Property Name="Image" Type="image" Nullable="false" />
           <Property Name="WeapNId" Type="int" Nullable="false" />
           <Property Name="Price" Type="float" Nullable="false" />
-          <Property Name="Rare" Type="int" Nullable="false" />
+          <Property Name="RareId" Type="int" Nullable="false" />
+          <Property Name="Startrack" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK__DropHisto__CaseI__0A688BB1">
           <End Role="Case" Type="Self.Case" Multiplicity="1" />
@@ -116,6 +117,18 @@
             </Principal>
             <Dependent Role="possSkinsInCase">
               <PropertyRef Name="Weaponid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Weapon__RareId__65F62111">
+          <End Role="Rare" Type="Self.Rare" Multiplicity="1" />
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rare">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Weapon">
+              <PropertyRef Name="RareId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -180,6 +193,10 @@
             <End Role="Weapon" EntitySet="Weapon" />
             <End Role="possSkinsInCase" EntitySet="possSkinsInCase" />
           </AssociationSet>
+          <AssociationSet Name="FK__Weapon__RareId__65F62111" Association="Self.FK__Weapon__RareId__65F62111">
+            <End Role="Rare" EntitySet="Rare" />
+            <End Role="Weapon" EntitySet="Weapon" />
+          </AssociationSet>
           <AssociationSet Name="FK__Weapon__SkinName__2CBDA3B5" Association="Self.FK__Weapon__SkinName__2CBDA3B5">
             <End Role="SkinN" EntitySet="SkinN" />
             <End Role="Weapon" EntitySet="Weapon" />
@@ -193,8 +210,7 @@
             <End Role="Weapon" EntitySet="Weapon" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -236,6 +252,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="21" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Weapon" Relationship="Model.FK__Weapon__RareId__65F62111" FromRole="Rare" ToRole="Weapon" />
         </EntityType>
         <EntityType Name="SkinN">
           <Key>
@@ -271,12 +288,14 @@
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="WeapNId" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Double" Nullable="false" />
-          <Property Name="Rare" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DropHistory" Relationship="Self.FK__DropHisto__Weapo__09746778" FromRole="Weapon" ToRole="DropHistory" />
           <NavigationProperty Name="possSkinsInCase" Relationship="Self.FK__possSkins__Weapo__29221CFB" FromRole="Weapon" ToRole="possSkinsInCase" />
           <NavigationProperty Name="SkinN" Relationship="Self.FK__Weapon__SkinName__2CBDA3B5" FromRole="Weapon" ToRole="SkinN" />
           <NavigationProperty Name="Type" Relationship="Self.FK__Weapon__TypeId__2DB1C7EE" FromRole="Weapon" ToRole="Type" />
           <NavigationProperty Name="WeapN" Relationship="Self.FK__Weapon__WeapNId__2EA5EC27" FromRole="Weapon" ToRole="WeapN" />
+          <Property Name="RareId" Type="Int32" Nullable="false" />
+          <Property Name="Startrack" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Rare" Relationship="Model.FK__Weapon__RareId__65F62111" FromRole="Weapon" ToRole="Rare" />
         </EntityType>
         <Association Name="FK__DropHisto__CaseI__0A688BB1">
           <End Role="Case" Type="Self.Case" Multiplicity="1" />
@@ -399,7 +418,23 @@
             <End Role="WeapN" EntitySet="WeapN" />
             <End Role="Weapon" EntitySet="Weapon" />
           </AssociationSet>
+          <AssociationSet Name="FK__Weapon__RareId__65F62111" Association="Model.FK__Weapon__RareId__65F62111">
+            <End Role="Rare" EntitySet="Rare" />
+            <End Role="Weapon" EntitySet="Weapon" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__Weapon__RareId__65F62111">
+          <End Type="Model.Rare" Role="Rare" Multiplicity="1" />
+          <End Type="Model.Weapon" Role="Weapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rare">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Weapon">
+              <PropertyRef Name="RareId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -470,13 +505,14 @@
           <EntitySetMapping Name="Weapon">
             <EntityTypeMapping TypeName="Model.Weapon">
               <MappingFragment StoreEntitySet="Weapon">
+                <ScalarProperty Name="Startrack" ColumnName="Startrack" />
+                <ScalarProperty Name="RareId" ColumnName="RareId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TypeId" ColumnName="TypeId" />
                 <ScalarProperty Name="SkinNameId" ColumnName="SkinNameId" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="WeapNId" ColumnName="WeapNId" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Rare" ColumnName="Rare" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

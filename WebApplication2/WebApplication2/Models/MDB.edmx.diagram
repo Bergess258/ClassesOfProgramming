@@ -20,6 +20,7 @@
         <AssociationConnector Association="Model.FK__Weapon__SkinName__2CBDA3B5" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK__Weapon__TypeId__2DB1C7EE" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK__Weapon__WeapNId__2EA5EC27" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Weapon__RareId__65F62111" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

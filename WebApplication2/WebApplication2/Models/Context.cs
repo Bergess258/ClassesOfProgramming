@@ -32,6 +32,11 @@ namespace WebApplication2.Models
                 .WithRequired(e => e.Case)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Rare>()
+                .HasMany(e => e.Weapon)
+                .WithRequired(e => e.Rare)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<SkinN>()
                 .HasMany(e => e.Weapon)
                 .WithRequired(e => e.SkinN)
