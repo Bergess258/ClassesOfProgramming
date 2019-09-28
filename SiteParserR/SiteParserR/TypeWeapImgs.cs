@@ -7,18 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication2.Models
+namespace SiteParserR
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class possSkinsInCase
+    public partial class TypeWeapImgs
     {
         public int Id { get; set; }
-        public Nullable<int> Caseid { get; set; }
-        public Nullable<int> Weaponid { get; set; }
+        public byte[] Image { get; set; }
+        public Nullable<int> TypeId { get; set; }
+        public Nullable<int> WeapId { get; set; }
     
-        public virtual Case Case { get; set; }
-        public virtual Weapon Weapon { get; set; }
+        public virtual Types Types { get; set; }
+        public virtual Weapons Weapons { get; set; }
     }
 }

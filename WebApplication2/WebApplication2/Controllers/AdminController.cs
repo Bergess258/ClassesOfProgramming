@@ -26,24 +26,24 @@ namespace WebApplication2.Controllers
         public ActionResult CaseManagment()
         {
             CaseListForCB caseList = new CaseListForCB();
-            caseList.Cases = context.Case.ToArray();
+            caseList.Cases = context.Cases.ToArray();
             caseList.selected = new bool[caseList.Cases.Count()];
             return View(caseList);
         }
         [HttpPost]
-        public ActionResult CaseManagment(List<Case> tempC)
+        public ActionResult CaseManagment(List<Cases> tempC)
         {
             return View();
         }
         [Authorize(Roles = "A")]
         public ActionResult SCM(int id)
         {
-            Case Case = context.Case.Where(x => x.Id == id).FirstOrDefault();
+            Cases Case = context.Cases.Where(x => x.Id == id).FirstOrDefault();
 
             return View(Case);
         }
         [HttpPost]
-        public ActionResult SCM(Case Case)
+        public ActionResult SCM(Cases Case)
         {
             HttpPostedFileBase Profile = Request.Files["profile"];
             if (Profile.ContentLength != 0)
@@ -69,7 +69,7 @@ namespace WebApplication2.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddCase(Case caseT)
+        public ActionResult AddCase(Cases caseT)
         {
             HttpPostedFileBase Profile = Request.Files["profile"];
             if (Profile.ContentLength != 0)
@@ -83,7 +83,7 @@ namespace WebApplication2.Controllers
                     // save changes to database
                 }
             }
-            context.Case.Add(caseT);
+            context.Cases.Add(caseT);
             return RedirectToAction("CaseManagment");
         }
         [HttpGet]
@@ -96,14 +96,14 @@ namespace WebApplication2.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewData["TypeName"] = new SelectList(context.Type.Select(n => n.Name), "TypeName");
-                ViewData["SkinName"] = new SelectList(context.SkinN.Select(n=>n.Name), "SkinName");
-                ViewData["WeapName"] = new SelectList(context.WeapN.Select(n => n.Name), "WeapName");
+                ViewData["TypeName"] = new SelectList(context.Types.Select(n => n.Name), "TypeName");
+                ViewData["SkinName"] = new SelectList(context.SkinNs.Select(n=>n.Name), "SkinName");
+                ViewData["WeapName"] = new SelectList(context.WeapNs.Select(n => n.Name), "WeapName");
             }
             return View();
         }
         [HttpPost]
-        public ActionResult AddWeap(Weapon weap)
+        public ActionResult AddWeap(Weapons weap)
         {
             HttpPostedFileBase Profile = Request.Files["profile"];
             if (Profile.ContentLength != 0)
@@ -117,16 +117,16 @@ namespace WebApplication2.Controllers
                     // save changes to database
                 }
             }
-            context.Weapon.Add(weap);
+            context.Weapons.Add(weap);
             return RedirectToAction("CaseManagment");
         }
         public ActionResult SWM(int id)
         {
-            Weapon Weap = context.Weapon.Where(x => x.Id == id).FirstOrDefault();
+            Weapons Weap = context.Weapons.Where(x => x.Id == id).FirstOrDefault();
             return View(Weap);
         }
         [HttpPost]
-        public ActionResult SWM(Weapon Weap)
+        public ActionResult SWM(Weapons Weap)
         {
             HttpPostedFileBase Profile = Request.Files["profile"];
             if (Profile.ContentLength != 0)
@@ -145,14 +145,14 @@ namespace WebApplication2.Controllers
         }
         public FileContentResult CasePhoto(int id)
         {
-            Case Case = context.Case.Where(x => x.Id == id).First();
+            Cases Case = context.Cases.Where(x => x.Id == id).First();
             if(Case!=null&&Case.Image!=null)
             return new FileContentResult(Case.Image, "image/png");
             return null;
         }
         public FileContentResult WeapPhoto(int id)
         {
-            Weapon Weapon = context.Weapon.Where(x => x.Id == id).First();
+            Weapons Weapon = context.Weapons.Where(x => x.Id == id).First();
             if (Weapon != null && Weapon.Image != null)
                 return new FileContentResult(Weapon.Image, "image/png");
             return null;

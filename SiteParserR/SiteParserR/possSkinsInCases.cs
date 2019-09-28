@@ -7,23 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication2.Models
+namespace SiteParserR
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Rare
+    public partial class possSkinsInCases
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Rare()
-        {
-            this.Weapon = new HashSet<Weapon>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
+        public Nullable<int> Caseid { get; set; }
+        public Nullable<int> Weaponid { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Weapon> Weapon { get; set; }
+        public virtual Cases Cases { get; set; }
+        public virtual Weapons Weapons { get; set; }
     }
 }

@@ -7,36 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication2.Models
+namespace SiteParserR
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Weapon
+    public partial class Rares
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Weapon()
+        public Rares()
         {
-            this.DropHistory = new HashSet<DropHistory>();
-            this.possSkinsInCase = new HashSet<possSkinsInCase>();
+            this.Weapons = new HashSet<Weapons>();
         }
     
         public int Id { get; set; }
-        public int TypeId { get; set; }
-        public int SkinNameId { get; set; }
-        public byte[] Image { get; set; }
-        public int WeapNId { get; set; }
-        public double Price { get; set; }
-        public int RareId { get; set; }
-        public bool Startrack { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DropHistory> DropHistory { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<possSkinsInCase> possSkinsInCase { get; set; }
-        public virtual SkinN SkinN { get; set; }
-        public virtual Type Type { get; set; }
-        public virtual WeapN WeapN { get; set; }
-        public virtual Rare Rare { get; set; }
+        public virtual ICollection<Weapons> Weapons { get; set; }
     }
 }

@@ -7,23 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication2.Models
+namespace SiteParserR
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class SkinN
+    public partial class WeapNs
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SkinN()
+        public WeapNs()
         {
-            this.Weapon = new HashSet<Weapon>();
+            this.Weapons = new HashSet<Weapons>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Weapon> Weapon { get; set; }
+        public virtual ICollection<Weapons> Weapons { get; set; }
     }
 }

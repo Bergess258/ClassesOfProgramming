@@ -7,23 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication2.Models
+namespace SiteParserR
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class WeapN
+    public partial class DropHistories
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public WeapN()
-        {
-            this.Weapon = new HashSet<Weapon>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string UserId { get; set; }
+        public int WeaponId { get; set; }
+        public int CaseId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Weapon> Weapon { get; set; }
+        public virtual Cases Cases { get; set; }
+        public virtual Weapons Weapons { get; set; }
     }
 }

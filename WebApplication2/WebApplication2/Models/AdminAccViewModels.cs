@@ -7,14 +7,14 @@ namespace WebApplication2.Models
 {
     public class CaseListForCB
     {
-        public Case[] Cases { get; set; }
+        public Cases[] Cases { get; set; }
         public bool[] selected { get; set; }
     }
 
     public class caseManagment
     {
-        public Case Case { get; set;}
-        public List<Weapon> Weapon { get; set; }
+        public Cases Case { get; set;}
+        public List<Weapons> Weapon { get; set; }
         public bool[] weaponSelect { get; set; }
     }
 }

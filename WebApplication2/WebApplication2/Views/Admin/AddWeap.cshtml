@@ -1,4 +1,4 @@
-﻿@model WebApplication2.Models.Weapon
+﻿@model WebApplication2.Models.Weapons
 
 @{
     Layout = null;
@@ -28,18 +28,18 @@
             </div>
     
             <div class="form-group">
-                @Html.LabelFor(model => model.Type.Name, "TypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Types.Name, "TypeId", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("TypeName",ViewData["TypeName"] as SelectList, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Type.Name, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.Types.Name, "", new { @class = "text-danger" })
                 </div>
             </div>
     
             <div class="form-group">
-                @Html.LabelFor(model => model.SkinN.Name, "SkinNameId", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.SkinNs.Name, "SkinNameId", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("SkinName", ViewData["SkinName"] as SelectList, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.SkinN.Name, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.SkinNs.Name, "", new { @class = "text-danger" })
                 </div>
             </div>
     
@@ -52,10 +52,10 @@
             </div>
     
             <div class="form-group">
-                @Html.LabelFor(model => model.WeapN.Name, "WeapName", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.WeapNs.Name, "WeapName", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("WeapName", ViewData["WeapName"] as SelectList, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.WeapN.Name, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.WeapNs.Name, "", new { @class = "text-danger" })
                 </div>
             </div>
     
@@ -78,10 +78,10 @@
             </div>
     
             <div class="form-group">
-                @Html.LabelFor(model => model.Rare, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Rares, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Rare, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Rare, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Rares, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Rares, "", new { @class = "text-danger" })
                 </div>
             </div>
     

@@ -36,7 +36,7 @@ namespace WebApplication2.Controllers
         }
         public FileContentResult Image(string caseNAme)
         {
-            List<Case> temp = context.Case.Where(p => p.Name == caseNAme).ToList();
+            List<Cases> temp = context.Cases.Where(p => p.Name == caseNAme).ToList();
             if (temp != null && temp.Count != 0)
             {
                 return new FileContentResult(temp[0].Image, "png");
@@ -46,7 +46,7 @@ namespace WebApplication2.Controllers
         }
         public FileContentResult WeaponImage(int Id)
         {
-            List<Weapon> tempW = context.Weapon.Where(p => p.Id == 0).ToList();
+            List<Weapons> tempW = context.Weapons.Where(p => p.Id == 0).ToList();
             //context.possSkinsInCase.Find(Id).Weapon.Image; possSkinsInCase поменять на название таблицы
             if (tempW != null && tempW.Count != 0)
             {

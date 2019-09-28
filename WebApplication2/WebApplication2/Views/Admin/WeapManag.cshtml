@@ -1,4 +1,4 @@
-﻿@model List<WebApplication2.Models.Weapon>
+﻿@model List<WebApplication2.Models.Weapons>
 @{
     Layout = null;
 }
@@ -17,13 +17,13 @@
             <div>
 
             </div>
-            @foreach (WebApplication2.Models.Weapon item in Model)
+            @foreach (WebApplication2.Models.Weapons item in Model)
             {
                 <div class="con-item" style="width:20%">
                     @Html.ActionLink("A", "SCM", "Admin", new { id = item.Id }, new { @class = "item-link" })
                     <img src="@Url.Action("WeapPhoto","Admin", new { id = item.Id})" />
                     <br />
-                    <span class="item-title">@item.WeapN.Name @item.SkinN.Name</span>
+                    <span class="item-title">@item.WeapNs.Name @item.SkinNs.Name</span>
                 </div>
             }
         </section>

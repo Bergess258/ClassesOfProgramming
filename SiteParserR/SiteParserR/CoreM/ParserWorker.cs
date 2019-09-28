@@ -14,7 +14,7 @@ namespace Parser.Core
 
         HtmlLoader loader;
 
-
+        // Просто определение всего, что выше
         #region Properties
 
         public IParser<T> Parser
@@ -47,7 +47,7 @@ namespace Parser.Core
 
         public event Action<object, List<T>> OnNewData;
         public event Action<object> OnCompleted;
-
+        // Стандартное объявление
         public ParserWorker(IParser<T> parser)
         {
             this.parser = parser;
@@ -58,7 +58,7 @@ namespace Parser.Core
             this.parserSettings = parserSettings;
             loader = new HtmlLoader(parserSettings);
         }
-
+        // Функция для запуска парсинга(тут можно было запускать сразу Worker, но подразумевалась гибкость(не получилось короч))))
         public void StartW()
         {
             Worker();
@@ -67,7 +67,7 @@ namespace Parser.Core
         {
             WorkerWithPages(s);
         }
-
+        // По видосу посмотри что да как
         private async void Worker()
         {
             var source = await loader.GetSourcePage();
@@ -83,6 +83,7 @@ namespace Parser.Core
         }
         private async void WorkerWithPages(string[] s)
         {
+            // Просто сохдал лист, в который записываю обработку нескольких страниц(ссылки на них поступают в виде массива строк)
             List<T> weapSkins = new List<T>();
             for(int i = 0; i < s.Length; ++i)
             {

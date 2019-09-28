@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1b716ff97d6d419e8dc045da5cc54ae2" Name="Diagram1">
+      <Diagram DiagramId="d3a2a8f22390496bb5d8b767fc99ddf5" Name="Diagram1">
         <EntityTypeShape EntityType="Model.Cases" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.DropHistories" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.possSkinsInCases" Width="1.5" PointX="8.25" PointY="1.875" IsExpanded="true" />

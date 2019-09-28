@@ -185,40 +185,52 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909280634406_LastOne.cs" />
+    <Compile Include="Migrations\201909280634406_LastOne.Designer.cs">
+      <DependentUpon>201909280634406_LastOne.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminAccViewModels.cs" />
-    <Compile Include="Models\Case.cs">
+    <Compile Include="Models\Cases.cs">
       <DependentUpon>MDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Context.cs" />
-    <Compile Include="Models\DropHistory.cs">
+    <Compile Include="Models\DropHistories.cs">
       <DependentUpon>MDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\possSkinsInCase.cs">
+    <Compile Include="Models\possSkinsInCases.cs">
       <DependentUpon>MDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Rare.cs">
+    <Compile Include="Models\Rares.cs">
       <DependentUpon>MDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SkinN.cs">
+    <Compile Include="Models\SkinNs.cs">
       <DependentUpon>MDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Type.cs">
+    <Compile Include="Models\Types.cs">
       <DependentUpon>MDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\WeapN.cs">
+    <Compile Include="Models\TypeWeapImgs.cs">
       <DependentUpon>MDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Weapon.cs">
+    <Compile Include="Models\WeapNs.cs">
+      <DependentUpon>MDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Weapons.cs">
       <DependentUpon>MDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -342,6 +354,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201909280634406_LastOne.resx">
+      <DependentUpon>201909280634406_LastOne.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

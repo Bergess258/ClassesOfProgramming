@@ -7,23 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication2.Models
+namespace SiteParserR
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Type
+    public partial class Cases
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Type()
+        public Cases()
         {
-            this.Weapon = new HashSet<Weapon>();
+            this.DropHistories = new HashSet<DropHistories>();
+            this.possSkinsInCases = new HashSet<possSkinsInCases>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
+        public byte[] Image { get; set; }
+        public Nullable<double> Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Weapon> Weapon { get; set; }
+        public virtual ICollection<DropHistories> DropHistories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<possSkinsInCases> possSkinsInCases { get; set; }
     }
 }
